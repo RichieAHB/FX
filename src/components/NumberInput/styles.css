@@ -1,0 +1,15 @@
+.root {
+  font-size: 2rem;
+}
+
+.input {
+  appearance: none;
+  border: none;
+  width: auto;
+  font-size: 2rem;
+  padding: 0 0.25em;
+}
+
+.input:focus {
+  outline: none;
+}

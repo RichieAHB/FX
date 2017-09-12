@@ -15,7 +15,7 @@ const ExchangeBox = ({ balance, dropdown, children, offset }) => (
       <div className={styles.col}>
         {dropdown}
       </div>
-      <div className={styles.col}>
+      <div className={styles.value}>
         {children}
       </div>
     </div>

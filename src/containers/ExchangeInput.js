@@ -5,10 +5,11 @@ import { updateExchangeAmount } from '../actions';
 
 const mapStateToProps = (state) => ({
   value: getExchangeAmount(state),
+  prefix: '-',
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onChange: ({ target: { value }}) => dispatch(updateExchangeAmount(value)),
+  onChange: value => dispatch(updateExchangeAmount(value)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NumberInput);

@@ -7,10 +7,15 @@
 }
 
 .offset {
-  background-color: #eee;
+  background-color: #fff;
 }
 
 .col {
   flex: 1;
   padding: 0.75rem;
+}
+
+.value {
+  composes: col;
+  text-align: right;
 }

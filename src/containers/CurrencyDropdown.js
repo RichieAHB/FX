@@ -18,6 +18,7 @@ const mapStateToProps = (state, { value, currencies }) => {
   return {
     clearable: false,
     options,
+    searchable: false,
     valueRenderer: ({ value }) => <span>{value}</span>,
   };
 };

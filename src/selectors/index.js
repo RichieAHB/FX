@@ -41,12 +41,18 @@ const getLatestRateFromTo = createSelector(
 const getExchangeOutput = createSelector(
   getLatestRateFromTo,
   getExchangeAmount,
-  (rate, amount) => rate ? roundN(rate * amount, 2) : null,
+  (rate, amount) => {
+    if (!amount || !rate) {
+      return 0;
+    }
+    return roundN(rate * amount, 2);
+  }
 );
 
 const getCurrenciesTo = createSelector(
   getLatestRatesFrom,
-  (ratesFrom) => Object.keys(ratesFrom),
+  getExchangeFrom,
+  (ratesFrom, fromCurr) => Object.keys(ratesFrom).filter(to => to !== fromCurr),
 );
 
 export {
