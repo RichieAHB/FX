@@ -41,6 +41,7 @@ export {
   getUserCurrencyBalance,
   getExchangeFrom,
   getExchangeTo,
+  getLatestRateFromTo,
   getExchangeAmount,
   getExchangeOutput,
   getCurrenciesTo,

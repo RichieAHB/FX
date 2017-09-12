@@ -5,6 +5,7 @@ import ExchangeTo from './ExchangeTo';
 import ExchangeBox from '../components/ExchangeBox';
 import ExchangeInput from './ExchangeInput';
 import ExchangeOutput from './ExchangeOutput';
+import RateComparison from './RateComparison';
 import { startPollingLatest, cancelPollingLatest } from '../actions';
 import { getCurrenciesTo } from '../selectors';
 
@@ -25,6 +26,7 @@ class Exchange extends React.Component {
         <ExchangeBox dropdown={<ExchangeFrom currencies={['GBP']} />}>
           <ExchangeInput />
         </ExchangeBox>
+        <RateComparison />
         <ExchangeBox dropdown={<ExchangeTo currencies={this.props.currenciesTo} />}>
           <ExchangeOutput />
         </ExchangeBox>
