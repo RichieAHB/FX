@@ -6,7 +6,7 @@ import {
 
 const initialState = {
   exchangeAmount: 0,
-  exchangeFrom: 'GBP',
+  exchangeFrom: 'USD',
   exchangeTo: 'EUR',
 };
 

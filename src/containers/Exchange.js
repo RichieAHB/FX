@@ -17,7 +17,7 @@ import { getCurrenciesTo } from '../selectors';
 class Exchange extends React.Component {
 
   componentDidMount() {
-    this.props.dispatch(startPollingLatest());
+    this.props.dispatch(startPollingLatest(this.props.base));
   }
 
   componentWillUnmount() {
@@ -28,7 +28,7 @@ class Exchange extends React.Component {
     return (
       <Layout title="Exchange">
         <ExchangeBox
-          dropdown={<ExchangeFrom currencies={['GBP']} symbol={false} />}
+          dropdown={<ExchangeFrom currencies={[this.props.base]} symbol={false} />}
           balance={<BalanceFrom />}
           offset
         >
@@ -51,8 +51,9 @@ class Exchange extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  currenciesTo: getCurrenciesTo(state),
+const mapStateToProps = (state, props) => ({
+  // TODO: memoize this
+  currenciesTo: getCurrenciesTo(state).filter(curr => props.whitelistedCurrencies.indexOf(curr) > -1),
 });
 
 export default connect(mapStateToProps)(Exchange);

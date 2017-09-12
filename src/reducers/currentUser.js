@@ -1,6 +1,6 @@
 const initialState = {
   balances: {
-    GBP: 500,
+    USD: 500,
   },
 };
 
