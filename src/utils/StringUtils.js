@@ -26,7 +26,7 @@ const decimalCleaning = (str) => {
   return pre;
 };
 
-const sanitizeCurrency = (str) =>
+const sanitizeCurrency = str =>
   decimalCleaning(stripLeading(str, '0') || '0');
 
 export {

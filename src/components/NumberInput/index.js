@@ -2,6 +2,9 @@ import React from 'react';
 import styles from './styles.css';
 import { sanitizeCurrency } from '../../utils/StringUtils';
 import { focusEnd } from '../../utils/DOMUtils';
+import classNames from 'classnames/bind';
+
+const cx = classNames.bind(styles);
 
 class WidthFinder extends React.Component {
   componentDidMount() {
@@ -57,12 +60,18 @@ class NumberInput extends React.Component {
 
   onChange(e) {
     const { value } = e.target;
-    if (e.target.validity.valid) {
+    if (e.target.validity.valid && parseFloat(value) <= this.props.max) {
       this.setState({
         widthNeedsUpdate: true,
       }, () => {
-        const sanitizedValue = sanitizeCurrency(value);
+        const sanitizedValue = sanitizeCurrency(value, 0);
         this.props.onChange(sanitizedValue);
+      });
+    } else if (e.target.value === '') {
+      this.setState({
+        widthNeedsUpdate: true,
+      }, () => {
+        this.props.onChange("0");
       });
     }
   }
@@ -80,7 +89,12 @@ class NumberInput extends React.Component {
 
   render() {
     return (
-      <span className={styles.root}>
+      <span
+        className={cx({
+          root: true,
+          dim: this.props.dim,
+        })}
+      >
         <span className={styles.prefix}>{this.props.prefix}</span>
         <input
           ref={node => { this.input = node; }}
