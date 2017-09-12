@@ -28,7 +28,7 @@ class Exchange extends React.Component {
     return (
       <Layout title="Exchange">
         <ExchangeBox
-          dropdown={<ExchangeFrom currencies={['GBP']} />}
+          dropdown={<ExchangeFrom currencies={['GBP']} symbol={false} />}
           balance={<BalanceFrom />}
           offset
         >
@@ -36,7 +36,7 @@ class Exchange extends React.Component {
         </ExchangeBox>
         <RateComparison />
         <ExchangeBox
-          dropdown={<ExchangeTo currencies={this.props.currenciesTo} />}
+          dropdown={<ExchangeTo currencies={this.props.currenciesTo} symbol={false} />}
           balance={<BalanceTo />}
         >
           <ExchangeOutput />

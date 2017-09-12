@@ -1,7 +1,7 @@
 import React from 'react';
 import currencySymbolMap from 'currency-symbol-map';
 
-const CurrencyDisplay = ({ currency, amount, long = false }) => {
+const CurrencyDisplay = ({ currency, amount, long = false, symbol = true }) => {
   const decimalPlaces = long ? 4 : 2;
   const amountStr = amount.toFixed(decimalPlaces);
 
@@ -9,7 +9,9 @@ const CurrencyDisplay = ({ currency, amount, long = false }) => {
 
   return (
     <span>
-      <span>{`${currencySymbolMap(currency)}`}</span>
+      {symbol && (
+        <span>{`${currencySymbolMap(currency)}`}</span>
+      )}
       <span>{int}.</span>
       {long ? (
         <span>
