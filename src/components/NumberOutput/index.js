@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './styles.css';
 
-const NumberOutput = ({ children }) =>
-  <span className={styles.root}>{children}</span>
+const NumberOutput = ({ children, prefix }) =>
+  <span className={styles.root}>{prefix} {children}</span>
 
 export default NumberOutput;

@@ -9,6 +9,8 @@ import ExchangeOutput from './ExchangeOutput';
 import BalanceFrom from './BalanceFrom';
 import BalanceTo from './BalanceTo';
 import RateComparison from './RateComparison';
+import ExchangeButton from './ExchangeButton';
+import ExchangeActions from '../components/ExchangeActions';
 import { startPollingLatest, cancelPollingLatest } from '../actions';
 import { getCurrenciesTo } from '../selectors';
 
@@ -39,6 +41,11 @@ class Exchange extends React.Component {
         >
           <ExchangeOutput />
         </ExchangeBox>
+        <ExchangeActions>
+          <ExchangeButton>
+            Exchange
+          </ExchangeButton>
+        </ExchangeActions>
       </Layout>
     );
   }

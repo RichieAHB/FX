@@ -4,6 +4,7 @@ import NumberOutput from '../components/NumberOutput';
 
 const mapStateToProps = state => ({
   children: getExchangeOutput(state),
+  prefix: '+',
 });
 
 export default connect(mapStateToProps)(NumberOutput);

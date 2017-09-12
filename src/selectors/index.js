@@ -45,7 +45,7 @@ const getExchangeOutput = createSelector(
     if (!amount || !rate) {
       return 0;
     }
-    return roundN(parseInt(rate, 10) * amount, 2);
+    return roundN(parseFloat(rate) * amount, 2);
   }
 );
 
@@ -53,6 +53,11 @@ const getCurrenciesTo = createSelector(
   getLatestRatesFrom,
   getExchangeFrom,
   (ratesFrom, fromCurr) => Object.keys(ratesFrom).filter(to => to !== fromCurr),
+);
+
+const getCanExchange = createSelector(
+  getExchangeAmount,
+  (amount) => parseInt(amount, 10) > 0,
 );
 
 export {
@@ -66,5 +71,6 @@ export {
   getExchangeAmount,
   getExchangeOutput,
   getCurrenciesTo,
+  getCanExchange,
 };
 

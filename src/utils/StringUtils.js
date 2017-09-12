@@ -22,6 +22,7 @@ const decimalCleaning = (str) => {
   if (hadDecimal) {
     return `${pre}.${post}`;
   }
+
   return pre;
 };
 
