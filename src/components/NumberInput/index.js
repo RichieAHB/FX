@@ -26,7 +26,7 @@ class WidthFinder extends React.Component {
           border: 'none',
           display: 'inline-block',
           margin: 0,
-          position: 'absolute',
+          position: 'fixed',
           visibility: 'hidden',
         }}
       >
@@ -108,12 +108,10 @@ class NumberInput extends React.Component {
           onChange={this.onChange}
           onFocus={this.afterFocus}
         />
-        {(
-          <WidthFinder
-            value={this.value}
-            onValueChange={this.onWidthChange}
-          />
-        )}
+        <WidthFinder
+          value={this.value}
+          onValueChange={this.onWidthChange}
+        />
       </span>
     );
   }
