@@ -14,7 +14,6 @@ const stripLeading = (str, stripChar = ' ') => {
 };
 
 const decimalCleaning = (str) => {
-  console.log(str);
   const output = str.split('.');
   const hadDecimal = output.length > 1;
   const pre = output.shift();

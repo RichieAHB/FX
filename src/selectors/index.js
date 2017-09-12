@@ -45,7 +45,7 @@ const getExchangeOutput = createSelector(
     if (!amount || !rate) {
       return 0;
     }
-    return roundN(rate * amount, 2);
+    return roundN(parseInt(rate, 10) * amount, 2);
   }
 );
 
