@@ -4,6 +4,7 @@ import { roundN } from '../utils/MathUtils';
 
 const getCurrencies = ({ currencies }) => currencies;
 const getLatest = ({ latest }) => latest;
+const getUserBalances = ({ currentUser: { balances } }) => balances;
 
 const getUserCurrencyBalance = ({ currentUser: { balances } }, { currency }) =>
   balances[currency] || 0;
@@ -12,6 +13,18 @@ const getExchangeAmount = ({ ui: { exchangeAmount } }) => exchangeAmount;
 
 const getExchangeFrom = ({ ui: { exchangeFrom } }) => exchangeFrom;
 const getExchangeTo = ({ ui: { exchangeTo } }) => exchangeTo;
+
+const getBalanceFrom = createSelector(
+  getUserBalances,
+  getExchangeFrom,
+  (balances, exchangeFrom) => balances[exchangeFrom] || 0,
+);
+
+const getBalanceTo = createSelector(
+  getUserBalances,
+  getExchangeTo,
+  (balances, exchangeTo) => balances[exchangeTo] || 0,
+);
 
 const getLatestRatesFrom = createSelector(
   getLatest,
@@ -41,6 +54,8 @@ export {
   getUserCurrencyBalance,
   getExchangeFrom,
   getExchangeTo,
+  getBalanceFrom,
+  getBalanceTo,
   getLatestRateFromTo,
   getExchangeAmount,
   getExchangeOutput,

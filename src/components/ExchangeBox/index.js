@@ -1,13 +1,28 @@
 import React from 'react';
 import styles from './styles.css';
+import classNames from 'classnames/bind';
 
-const ExchangeBox = ({ dropdown, children }) => (
-  <div className={styles.root}>
-    <div className={styles.col}>
-      {dropdown}
+const cx = classNames.bind(styles);
+
+const ExchangeBox = ({ balance, dropdown, children, offset }) => (
+  <div
+    className={cx({
+      root: true,
+      offset,
+    })}
+  >
+    <div className={styles.row}>
+      <div className={styles.col}>
+        {dropdown}
+      </div>
+      <div className={styles.col}>
+        {children}
+      </div>
     </div>
-    <div className={styles.col}>
-      {children}
+    <div className={styles.row}>
+      <div className={styles.col}>
+        {balance}
+      </div>
     </div>
   </div>
 );

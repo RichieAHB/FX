@@ -1,8 +1,16 @@
 .root {
+  padding: 1rem 0;
+}
+
+.row {
   display: flex;
+}
+
+.offset {
+  background-color: #eee;
 }
 
 .col {
   flex: 1;
-  padding: 1rem;
+  padding: 0.75rem;
 }

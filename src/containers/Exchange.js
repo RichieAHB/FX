@@ -1,10 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Layout from '../components/Layout';
 import ExchangeFrom from './ExchangeFrom';
 import ExchangeTo from './ExchangeTo';
 import ExchangeBox from '../components/ExchangeBox';
 import ExchangeInput from './ExchangeInput';
 import ExchangeOutput from './ExchangeOutput';
+import BalanceFrom from './BalanceFrom';
+import BalanceTo from './BalanceTo';
 import RateComparison from './RateComparison';
 import { startPollingLatest, cancelPollingLatest } from '../actions';
 import { getCurrenciesTo } from '../selectors';
@@ -21,16 +24,22 @@ class Exchange extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>Exchange</h1>
-        <ExchangeBox dropdown={<ExchangeFrom currencies={['GBP']} />}>
+      <Layout title="Exchange">
+        <ExchangeBox
+          dropdown={<ExchangeFrom currencies={['GBP']} />}
+          balance={<BalanceFrom />}
+        >
           <ExchangeInput />
         </ExchangeBox>
         <RateComparison />
-        <ExchangeBox dropdown={<ExchangeTo currencies={this.props.currenciesTo} />}>
+        <ExchangeBox
+          dropdown={<ExchangeTo currencies={this.props.currenciesTo} />}
+          balance={<BalanceTo />}
+          offset
+        >
           <ExchangeOutput />
         </ExchangeBox>
-      </div>
+      </Layout>
     );
   }
 }
