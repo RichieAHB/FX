@@ -2,9 +2,10 @@ import { delay } from 'redux-saga'
 import { all, call, cancel, fork, put, take } from 'redux-saga/effects';
 import { START_POLLING_LATEST, CANCEL_POLLING_LATEST } from '../constants';
 import { pollLatest, receiveLatest, pollingError } from '../actions/';
+import * as FXAPI from '../services/FXAPI';
 
 function* fetchLatest(base) {
-  const response = yield call(fetch, `${base}.json`);
+  const response = yield call(FXAPI.latest, { base });
   yield put(receiveLatest(response));
   yield put(pollLatest());
 }

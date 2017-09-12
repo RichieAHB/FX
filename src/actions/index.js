@@ -4,6 +4,9 @@ import {
   RECEIVE_LATEST,
   POLL_LATEST,
   POLLING_ERROR,
+  UPDATE_EXCHANGE_AMOUNT,
+  UPDATE_EXCHANGE_FROM,
+  UPDATE_EXCHANGE_TO,
 } from '../constants';
 
 const startPollingLatest = base => ({
@@ -28,10 +31,28 @@ const pollingError = () => ({
   type: POLLING_ERROR,
 });
 
+const updateExchangeAmount = exchangeAmount => ({
+  type: UPDATE_EXCHANGE_AMOUNT,
+  payload: exchangeAmount,
+});
+
+const updateExchangeFrom = exchangeFrom => ({
+  type: UPDATE_EXCHANGE_FROM,
+  payload: exchangeFrom,
+});
+
+const updateExchangeTo = exchangeTo => ({
+  type: UPDATE_EXCHANGE_TO,
+  payload: exchangeTo,
+});
+
 export {
   startPollingLatest,
   cancelPollingLatest,
   receiveLatest,
   pollLatest,
   pollingError,
+  updateExchangeAmount,
+  updateExchangeFrom,
+  updateExchangeTo,
 };

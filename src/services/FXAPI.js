@@ -15,9 +15,10 @@ const apiURI = (path, opts) => {
 const fetchURI = (path, opts) =>
   fetch(apiURI(path)).then(response => response.json());
 
-const latest = base => fetchURI('/latest.json', {
-  base,
-});
+// const latest = base => fetchURI('/latest.json', {
+//   base,
+// });
+const latest = () => fetch('/latest.json').then(response => response.json());
 
 export {
   latest,
