@@ -2,7 +2,7 @@
 
 ## Instructions
 
-`npm install && npm serve`
+`npm install && npm run serve`
 
 Then go to http://localhost:5000
 
