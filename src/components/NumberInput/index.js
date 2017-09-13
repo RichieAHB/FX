@@ -60,7 +60,7 @@ class NumberInput extends React.Component {
 
   onChange(e) {
     const { value } = e.target;
-    if (e.target.validity.valid && parseFloat(value) <= this.props.max) {
+    if (parseFloat(value) <= this.props.max) {
       this.setState({
         widthNeedsUpdate: true,
       }, () => {

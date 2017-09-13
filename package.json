@@ -40,7 +40,7 @@
     "redux": "^3.7.2",
     "redux-saga": "^0.15.6",
     "reselect": "^3.0.1",
-    "selectn": "^1.1.2",
+    "serve": "^6.0.6",
     "style-loader": "0.18.2",
     "sw-precache-webpack-plugin": "0.11.4",
     "url-loader": "0.5.9",
@@ -52,6 +52,7 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
+    "serve": "npm run build && serve -s build",
     "test": "node scripts/test.js --env=jsdom"
   },
   "jest": {
