@@ -1,5 +1,4 @@
 import { createSelector } from 'reselect';
-import { roundN } from '../utils/MathUtils';
 
 const getCurrencies = ({ currencies }) => currencies;
 const getLatest = ({ latest }) => latest;

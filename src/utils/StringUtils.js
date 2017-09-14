@@ -13,7 +13,7 @@ const stripLeading = (str, stripChar = ' ') => {
   return chars.slice(i).join('');
 };
 
-const charCleaning = str => str.replace(/[^0-9\.]/g, '');
+const charCleaning = str => str.replace(/[^0-9.]/g, '');
 
 const decimalCleaning = (str, dp = 2) => {
   const output = str.split('.');
