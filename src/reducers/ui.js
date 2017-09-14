@@ -6,7 +6,8 @@ import {
 } from '../constants';
 
 const initialState = {
-  exchangeAmount: 0,
+  exchangeAmountInput: 0,
+  exchangeOutputInput: 0,
   exchangeFrom: 'USD',
   exchangeTo: 'EUR',
 };
@@ -16,7 +17,8 @@ const ui = (state = initialState, action) => {
     case UPDATE_EXCHANGE_AMOUNT: {
       return {
         ...state,
-        exchangeAmount: action.payload,
+        exchangeAmountInput: action.payload.amount,
+        exchangeOutputInput: action.payload.output,
       };
     }
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './styles.css';
-import { sanitizeCurrency } from '../../utils/StringUtils';
 import { focusEnd } from '../../utils/DOMUtils';
 import classNames from 'classnames/bind';
 
@@ -64,8 +63,7 @@ class NumberInput extends React.Component {
       this.setState({
         widthNeedsUpdate: true,
       }, () => {
-        const sanitizedValue = sanitizeCurrency(value);
-        this.props.onChange(sanitizedValue);
+        this.props.onChange(value);
       });
     } else if (e.target.value === '') {
       this.setState({

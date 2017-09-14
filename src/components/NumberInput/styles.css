@@ -8,6 +8,7 @@
 
 .input {
   appearance: none;
+  background-color: transparent;
   border: none;
   color: inherit;
   width: auto;

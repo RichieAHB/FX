@@ -3,18 +3,18 @@ import Button from '../components/Button';
 import {
   getCanExchange,
   getExchangeFrom,
-  getExchangeAmount,
+  getExchangeAmountInput,
   getExchangeTo,
-  getExchangeOutput,
+  getExchangeOutputInput,
 } from '../selectors';
 import { exchangeCurrentUser } from '../actions';
 
 const mapStateToProps = state => ({
   disabled: !getCanExchange(state),
   exchangeFrom: getExchangeFrom(state),
-  amountFrom: getExchangeAmount(state),
+  amountFrom: getExchangeAmountInput(state),
   exchangeTo: getExchangeTo(state),
-  output: getExchangeOutput(state),
+  output: getExchangeOutputInput(state),
 });
 
 const mapDispatchToProps = dispatch => ({ dispatch });

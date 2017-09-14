@@ -1,16 +1,27 @@
 import { connect } from 'react-redux';
-import { getExchangeOutput } from '../selectors';
-import NumberOutput from '../components/NumberOutput';
+import { getExchangeOutputInput, getMaxBalanceTo, getLatestRateFromTo } from '../selectors';
+import NumberInput from '../components/NumberInput';
+import { updateExchangeOutputInput } from '../actions';
 
 const mapStateToProps = state => {
-  const output = getExchangeOutput(state).toFixed(2);
+  const output = getExchangeOutputInput(state);
   const isZero = parseFloat(output) === 0;
   const value = isZero ? "0" : output;
   return {
     dim: isZero,
-    children: value,
+    value,
+    max: getMaxBalanceTo(state),
     prefix: '+',
+    rate: getLatestRateFromTo(state),
   }
 };
 
-export default connect(mapStateToProps)(NumberOutput);
+const mapDispatchToProps = dispatch => ({ dispatch });
+
+const mergeProps = ({ rate, ...stateProps }, { dispatch }, ownProps) => ({
+  ...ownProps,
+  ...stateProps,
+  onChange: value => dispatch(updateExchangeOutputInput(value, rate)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(NumberInput);

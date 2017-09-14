@@ -8,7 +8,8 @@ const getUserBalances = ({ currentUser: { balances } }) => balances;
 const getUserCurrencyBalance = ({ currentUser: { balances } }, { currency }) =>
   balances[currency] || 0;
 
-const getExchangeAmount = ({ ui: { exchangeAmount } }) => exchangeAmount;
+const getExchangeAmountInput = ({ ui: { exchangeAmountInput } }) => exchangeAmountInput;
+const getExchangeOutputInput = ({ ui: { exchangeOutputInput } }) => exchangeOutputInput;
 
 const getExchangeFrom = ({ ui: { exchangeFrom } }) => exchangeFrom;
 const getExchangeTo = ({ ui: { exchangeTo } }) => exchangeTo;
@@ -37,15 +38,10 @@ const getLatestRateFromTo = createSelector(
   (ratesFrom, exchangeTo) => ratesFrom[exchangeTo],
 );
 
-const getExchangeOutput = createSelector(
+const getMaxBalanceTo = createSelector(
+  getBalanceFrom,
   getLatestRateFromTo,
-  getExchangeAmount,
-  (rate, amount) => {
-    if (!amount || !rate) {
-      return 0;
-    }
-    return roundN(parseFloat(rate) * amount, 2);
-  }
+  (balance, rate) => balance * rate,
 );
 
 const getCurrenciesTo = createSelector(
@@ -55,7 +51,7 @@ const getCurrenciesTo = createSelector(
 );
 
 const getCanExchange = createSelector(
-  getExchangeAmount,
+  getExchangeAmountInput,
   (amount) => parseFloat(amount) > 0,
 );
 
@@ -66,9 +62,10 @@ export {
   getExchangeTo,
   getBalanceFrom,
   getBalanceTo,
+  getMaxBalanceTo,
   getLatestRateFromTo,
-  getExchangeAmount,
-  getExchangeOutput,
+  getExchangeAmountInput,
+  getExchangeOutputInput,
   getCurrenciesTo,
   getCanExchange,
 };

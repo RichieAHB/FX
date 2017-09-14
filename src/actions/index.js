@@ -10,6 +10,7 @@ import {
   EXCHANGE_CURRENT_USER,
 } from '../constants';
 import { roundN } from '../utils/MathUtils';
+import { sanitizeCurrency } from '../utils/StringUtils';
 
 const startPollingLatest = base => ({
   type: START_POLLING_LATEST,
@@ -33,10 +34,26 @@ const pollingError = () => ({
   type: POLLING_ERROR,
 });
 
-const updateExchangeAmount = exchangeAmount => ({
+const updateExchangeAmount = (amount, output) => ({
   type: UPDATE_EXCHANGE_AMOUNT,
-  payload: exchangeAmount,
+  payload: {
+    amount,
+    output,
+  },
 });
+
+const updateExchangeAmountInput = (exchangeAmount, rate) => {
+  const amount = sanitizeCurrency(exchangeAmount);
+  const output = roundN(parseFloat(rate) * parseFloat(amount), 2).toFixed(2);
+  return updateExchangeAmount(amount, output);
+};
+
+const updateExchangeOutputInput = (exchangeOutput, rate) => {
+  const output = sanitizeCurrency(exchangeOutput);
+  const amount = roundN(parseFloat(output) / parseFloat(rate), 2).toFixed(2);
+  return updateExchangeAmount(amount, output);
+};
+
 
 const updateExchangeFrom = exchangeFrom => ({
   type: UPDATE_EXCHANGE_FROM,
@@ -64,7 +81,8 @@ export {
   receiveLatest,
   pollLatest,
   pollingError,
-  updateExchangeAmount,
+  updateExchangeAmountInput,
+  updateExchangeOutputInput,
   updateExchangeFrom,
   updateExchangeTo,
   exchangeCurrentUser,

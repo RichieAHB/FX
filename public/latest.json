@@ -2,11 +2,12 @@
     "disclaimer": "https://openexchangerates.org/terms/",
     "license": "https://openexchangerates.org/license/",
     "timestamp": 1449877801,
-    "base": "GBP",
+    "base": "USD",
     "rates": {
         "GBP": 1.0003,
         "EUR": 1.0602,
-        "USD": 1.1214,
+        "USD": 1,
+        "HKD": 4.1214,
         "MZN": 60.0533,
         "ZAR": 17.1290
     }
