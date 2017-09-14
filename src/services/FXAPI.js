@@ -15,11 +15,9 @@ const apiURI = (path, opts = {}) => {
 const fetchURI = (path, opts = {}) =>
   fetch(apiURI(path, opts)).then(response => response.json());
 
-// const latest = base => fetchURI('/latest.json', /* {
-//   base, // not available with free account
-// } */);
-
-const latest = () => fetch('/latest.json').then(response => response.json());
+const latest = base => fetchURI('/latest.json', /* {
+  base, // not available with free account
+} */);
 
 export {
   latest,
