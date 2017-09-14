@@ -60,13 +60,11 @@ class NumberInput extends React.Component {
 
   onChange(e) {
     const { value } = e.target;
-    console.log(value);
     if (parseFloat(value) <= this.props.max) {
       this.setState({
         widthNeedsUpdate: true,
       }, () => {
         const sanitizedValue = sanitizeCurrency(value);
-        console.log(sanitizedValue);
         this.props.onChange(sanitizedValue);
       });
     } else if (e.target.value === '') {

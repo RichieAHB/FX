@@ -56,7 +56,7 @@ const getCurrenciesTo = createSelector(
 
 const getCanExchange = createSelector(
   getExchangeAmount,
-  (amount) => parseInt(amount, 10) > 0,
+  (amount) => parseFloat(amount) > 0,
 );
 
 export {
