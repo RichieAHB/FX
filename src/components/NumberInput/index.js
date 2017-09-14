@@ -40,7 +40,9 @@ class NumberInput extends React.Component {
     super(props);
 
     this.onChange = this.onChange.bind(this);
-    this.afterFocus = this.afterFocus.bind(this);
+    this.onClick = this.onClick.bind(this);
+    this.onKeyDown = this.onKeyDown.bind(this);
+    this.onFocus = this.onFocus.bind(this);
     this.onWidthChange = this.onWidthChange.bind(this);
 
     this.state = {
@@ -55,8 +57,18 @@ class NumberInput extends React.Component {
     }
   }
 
-  afterFocus() {
+  onClick(e) {
     focusEnd(this.input, false);
+  }
+
+  onFocus() {
+    focusEnd(this.input, false);
+  }
+
+  onKeyDown(e) {
+    if(e.keyCode === 37 || e.keyCode === 39){
+      e.preventDefault();
+    }
   }
 
   onChange(e) {
@@ -67,7 +79,23 @@ class NumberInput extends React.Component {
       }, () => {
         this.props.onChange(value);
       });
-    } else if (e.target.value === '') {
+    } else if (value === '') {
+      this.setState({
+        widthNeedsUpdate: true,
+      }, () => {
+        this.props.onChange("0");
+      });
+    }
+  }
+
+  updateWidth(value) {
+    if (parseFloat(value) <= this.props.max) {
+      this.setState({
+        widthNeedsUpdate: true,
+      }, () => {
+        this.props.onChange(value);
+      });
+    } else if (value === '') {
       this.setState({
         widthNeedsUpdate: true,
       }, () => {
@@ -106,7 +134,9 @@ class NumberInput extends React.Component {
           type="text"
           value={this.value}
           onChange={this.onChange}
-          onFocus={this.afterFocus}
+          onClick={this.onClick}
+          onKeyDown={this.onKeyDown}
+          onFocus={this.onFocus}
         />
         <WidthFinder
           value={this.value}
