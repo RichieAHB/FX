@@ -7,7 +7,9 @@ import {
   UPDATE_EXCHANGE_AMOUNT,
   UPDATE_EXCHANGE_FROM,
   UPDATE_EXCHANGE_TO,
+  EXCHANGE_CURRENT_USER,
 } from '../constants';
+import { roundN } from '../utils/MathUtils';
 
 const startPollingLatest = base => ({
   type: START_POLLING_LATEST,
@@ -46,6 +48,16 @@ const updateExchangeTo = exchangeTo => ({
   payload: exchangeTo,
 });
 
+const exchangeCurrentUser = (exchangeFrom, amountFrom, exchangeTo, output) => ({
+  type: EXCHANGE_CURRENT_USER,
+  payload: {
+    exchangeFrom,
+    amountFrom: roundN(parseFloat(amountFrom), 2),
+    exchangeTo,
+    output: roundN(parseFloat(output), 2),
+  },
+});
+
 export {
   startPollingLatest,
   cancelPollingLatest,
@@ -55,4 +67,5 @@ export {
   updateExchangeAmount,
   updateExchangeFrom,
   updateExchangeTo,
+  exchangeCurrentUser,
 };

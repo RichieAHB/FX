@@ -3,7 +3,7 @@ import { getExchangeOutput } from '../selectors';
 import NumberOutput from '../components/NumberOutput';
 
 const mapStateToProps = state => {
-  const output = getExchangeOutput(state);
+  const output = getExchangeOutput(state).toFixed(2);
   const isZero = parseFloat(output) === 0;
   const value = isZero ? "0" : output;
   return {
