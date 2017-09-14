@@ -20,7 +20,7 @@ const Exchange = ({ base, currenciesTo }) => (
       balance={<BalanceFrom />}
       offset
     >
-      <ExchangeInput />
+      <ExchangeInput focus />
     </ExchangeBox>
     <RateComparison />
     <ExchangeBox

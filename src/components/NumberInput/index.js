@@ -50,7 +50,9 @@ class NumberInput extends React.Component {
   }
 
   componentDidMount() {
-    this.input.focus();
+    if (this.props.focus) {
+      this.input.focus();
+    }
   }
 
   afterFocus() {

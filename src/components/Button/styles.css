@@ -17,3 +17,7 @@
 .root:disabled {
   background: #ffb8e3;
 }
+
+.root:focus {
+  outline: none;
+}
