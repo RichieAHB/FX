@@ -13,6 +13,8 @@ const stripLeading = (str, stripChar = ' ') => {
   return chars.slice(i).join('');
 };
 
+const charCleaning = str => str.replace(/[^0-9\.]/g, '');
+
 const decimalCleaning = (str, dp = 2) => {
   const output = str.split('.');
   const hadDecimal = output.length > 1;
@@ -28,8 +30,9 @@ const decimalCleaning = (str, dp = 2) => {
 };
 
 // Does not round as it is for strings
+// Todo should probably use FP and pipe all this! UGLY
 const sanitizeCurrency = (str, dp = 2) =>
-  decimalCleaning(stripLeading(str, '0') || '0', dp);
+  decimalCleaning(stripLeading(charCleaning(str), '0') || '0', dp);
 
 export {
   sanitizeCurrency,
