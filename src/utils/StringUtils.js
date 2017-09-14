@@ -13,11 +13,12 @@ const stripLeading = (str, stripChar = ' ') => {
   return chars.slice(i).join('');
 };
 
-const decimalCleaning = (str) => {
+const decimalCleaning = (str, dp = 2) => {
   const output = str.split('.');
   const hadDecimal = output.length > 1;
-  const pre = output.shift();
-  const post = output.join('').split('').slice(0, 2).join('');
+  let pre = output.shift();
+  pre = pre ? pre : '0';
+  const post = output.join('').split('').slice(0, dp).join('');
 
   if (hadDecimal) {
     return `${pre}.${post}`;
@@ -26,8 +27,9 @@ const decimalCleaning = (str) => {
   return pre;
 };
 
-const sanitizeCurrency = str =>
-  decimalCleaning(stripLeading(str, '0') || '0');
+// Does not round as it is for strings
+const sanitizeCurrency = (str, dp = 2) =>
+  decimalCleaning(stripLeading(str, '0') || '0', dp);
 
 export {
   sanitizeCurrency,
