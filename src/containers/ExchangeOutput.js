@@ -5,11 +5,9 @@ import { updateExchangeOutputInput } from '../actions';
 
 const mapStateToProps = state => {
   const output = getExchangeOutputInput(state);
-  const isZero = parseFloat(output) === 0;
-  const value = isZero ? "0" : output;
   return {
-    dim: isZero,
-    value,
+    dim: parseFloat(output) === 0,
+    value: output,
     max: getMaxBalanceTo(state),
     prefix: '+',
     rate: getLatestRateFromTo(state),
