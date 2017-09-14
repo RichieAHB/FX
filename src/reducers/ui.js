@@ -39,7 +39,8 @@ const ui = (state = initialState, action) => {
     case EXCHANGE_CURRENT_USER: {
       return {
         ...state,
-        exchangeAmount: 0,
+        exchangeAmountInput: 0,
+        exchangeOutputInput: 0,
       };
     }
 
