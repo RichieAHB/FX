@@ -24,8 +24,8 @@ class AppProvider extends React.Component {
     return (
       <Provider store={this.store}>
         <Exchange
-          base="USD"
           whitelistedCurrencies={[
+            'USD',
             'GBP',
             'EUR',
             'AUD',

@@ -13,6 +13,11 @@ const getExchangeOutputInput = ({ ui: { exchangeOutputInput } }) => exchangeOutp
 const getExchangeFrom = ({ ui: { exchangeFrom } }) => exchangeFrom;
 const getExchangeTo = ({ ui: { exchangeTo } }) => exchangeTo;
 
+const getCurrenciesFrom = createSelector(
+  getUserBalances,
+  balances => Object.keys(balances).filter(curr => balances[curr] > 0),
+);
+
 const getBalanceFrom = createSelector(
   getUserBalances,
   getExchangeFrom,
@@ -57,6 +62,7 @@ const getCanExchange = createSelector(
 export {
   getCurrencies,
   getUserCurrencyBalance,
+  getCurrenciesFrom,
   getExchangeFrom,
   getExchangeTo,
   getBalanceFrom,

@@ -5,7 +5,7 @@ import { pollLatest, receiveLatest, pollingError } from '../actions/';
 import * as FXAPI from '../services/FXAPI';
 
 function* fetchLatest(base) {
-  const response = yield call(FXAPI.latest, { base });
+  const response = yield call(FXAPI.latest, base);
   yield put(receiveLatest(response));
   yield put(pollLatest());
 }

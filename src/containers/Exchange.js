@@ -11,12 +11,12 @@ import BalanceTo from './BalanceTo';
 import RateComparison from './RateComparison';
 import ExchangeButton from './ExchangeButton';
 import ExchangeActions from '../components/ExchangeActions';
-import { getCurrenciesTo } from '../selectors';
+import { getCurrenciesFrom, getCurrenciesTo } from '../selectors';
 
-const Exchange = ({ base, currenciesTo }) => (
+const Exchange = ({ base, currenciesFrom, currenciesTo }) => (
   <Layout title="Exchange">
     <ExchangeBox
-      dropdown={<ExchangeFrom currencies={[base]} symbol={false} />}
+      dropdown={<ExchangeFrom currencies={currenciesFrom} symbol={false} />}
       balance={<BalanceFrom />}
       offset
     >
@@ -39,6 +39,7 @@ const Exchange = ({ base, currenciesTo }) => (
 
 const mapStateToProps = (state, props) => ({
   // TODO: memoize this
+  currenciesFrom: getCurrenciesFrom(state).filter(curr => props.whitelistedCurrencies.indexOf(curr) > -1),
   currenciesTo: getCurrenciesTo(state).filter(curr => props.whitelistedCurrencies.indexOf(curr) > -1),
 });
 
