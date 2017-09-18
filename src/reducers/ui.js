@@ -45,14 +45,6 @@ const ui = (state = initialState, action) => {
       };
     }
 
-    case EXCHANGE_CURRENT_USER: {
-      return {
-        ...state,
-        exchangeAmountInput: 0,
-        exchangeOutputInput: 0,
-      };
-    }
-
     default: {
       return state;
     }
