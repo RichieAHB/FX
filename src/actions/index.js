@@ -7,6 +7,7 @@ import {
   UPDATE_EXCHANGE_AMOUNT,
   UPDATE_EXCHANGE_FROM,
   UPDATE_EXCHANGE_TO,
+  RESET_EXCHANGE_AMOUNT,
   EXCHANGE_CURRENT_USER,
 } from '../constants';
 import { roundN } from '../utils/MathUtils';
@@ -65,6 +66,10 @@ const updateExchangeTo = exchangeTo => ({
   payload: exchangeTo,
 });
 
+const resetExchangeAmount = () => ({
+  type: RESET_EXCHANGE_AMOUNT,
+});
+
 const exchangeCurrentUser = (exchangeFrom, amountFrom, exchangeTo, output) => ({
   type: EXCHANGE_CURRENT_USER,
   payload: {
@@ -85,5 +90,6 @@ export {
   updateExchangeOutputInput,
   updateExchangeFrom,
   updateExchangeTo,
+  resetExchangeAmount,
   exchangeCurrentUser,
 };

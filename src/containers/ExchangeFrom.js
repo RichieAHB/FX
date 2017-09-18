@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import CurrencyDropdown from './CurrencyDropdown';
 import { getExchangeFrom } from '../selectors';
-import { updateExchangeFrom } from '../actions';
+import { resetExchangeAmount, updateExchangeFrom } from '../actions';
 import { startPollingLatest, cancelPollingLatest } from '../actions';
 
 class ExchangeFrom extends React.Component {
@@ -42,7 +42,10 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   dispatch,
-  onChange: value => dispatch(updateExchangeFrom(value)),
+  onChange: value => {
+    dispatch(updateExchangeFrom(value));
+    dispatch(resetExchangeAmount());
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ExchangeFrom);

@@ -7,7 +7,10 @@ import {
   getExchangeTo,
   getExchangeOutputInput,
 } from '../selectors';
-import { exchangeCurrentUser } from '../actions';
+import {
+  resetExchangeAmount,
+  exchangeCurrentUser,
+} from '../actions';
 
 const mapStateToProps = state => ({
   disabled: !getCanExchange(state),
@@ -26,7 +29,10 @@ const mergeProps = (
 ) => ({
   ...ownProps,
   ...stateProps,
-  onClick: () => dispatch(exchangeCurrentUser(exchangeFrom, amountFrom, exchangeTo, output)),
+  onClick: () => {
+    dispatch(exchangeCurrentUser(exchangeFrom, amountFrom, exchangeTo, output));
+    dispatch(resetExchangeAmount());
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(Button);

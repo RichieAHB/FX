@@ -2,6 +2,7 @@ import {
   UPDATE_EXCHANGE_AMOUNT,
   UPDATE_EXCHANGE_FROM,
   UPDATE_EXCHANGE_TO,
+  RESET_EXCHANGE_AMOUNT,
   EXCHANGE_CURRENT_USER,
 } from '../constants';
 
@@ -33,6 +34,14 @@ const ui = (state = initialState, action) => {
       return {
         ...state,
         exchangeTo: action.payload,
+      };
+    }
+
+    case RESET_EXCHANGE_AMOUNT: {
+      return {
+        ...state,
+        exchangeAmountInput: 0,
+        exchangeOutputInput: 0,
       };
     }
 
