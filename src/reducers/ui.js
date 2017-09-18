@@ -3,7 +3,6 @@ import {
   UPDATE_EXCHANGE_FROM,
   UPDATE_EXCHANGE_TO,
   RESET_EXCHANGE_AMOUNT,
-  EXCHANGE_CURRENT_USER,
 } from '../constants';
 
 const initialState = {
